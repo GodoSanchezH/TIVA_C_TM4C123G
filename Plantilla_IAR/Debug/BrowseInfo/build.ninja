@@ -1,0 +1,41 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = E$:\iar\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++E$:\iar\common\bin\XclFileGenerator.exe $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = E$:\iar\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++E$:\iar\common\bin\SourceIndexer.exe $flags
+
+rule MAKEBROWSE
+  command = E$:\iar\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++E$:\iar\common\bin\makeBrowseData.exe $flags
+
+rule PDBLINK
+  command = E$:\iar\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++E$:\iar\common\bin\PbdLink.exe $flags
+
+
+
+#Build steps
+build E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\main.c -xcl_file E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.xcl -macro_file E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.tmp -icc_path E$:\iar\arm\bin\iccarm.exe
+  flags = E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\main.c -o E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config E$:\iar\arm\inc\c\DLib_Config_Normal.h -I E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Drivers\CMSIS\Include\ -I E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Drivers\CMSIS\Device\TI\TM4C123\Inc\ -Ol --predef_macros E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.tmp
+  rspfile_name = E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.xcl.rsp
+
+build E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.pbi : INDEXER E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.xcl |  $
+E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\main.c
+  flags = -out=E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.pbi -f E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.xcl
+
+build E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbw : MAKEBROWSE E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbd
+  flags = E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbd -output E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbw
+
+build E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbd : PDBLINK E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.pbi
+  flags = -M E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\Plantilla_Iar.pbd E$:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\BrowseInfo\main.pbi
+

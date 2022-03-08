@@ -1,0 +1,179 @@
+###############################################################################
+#
+# IAR ELF Linker V9.20.2.320/W64 for ARM                  06/Mar/2022  22:37:15
+# Copyright 2007-2021 IAR Systems AB.
+#
+#    Output file  =
+#        E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Exe\Plantilla_Iar.out
+#    Map file     =
+#        E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\List\Plantilla_Iar.map
+#    Command line =
+#        -f
+#        E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Exe\Plantilla_Iar.out.rsp
+#        (E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Obj\main.o
+#        --no_out_extension -o
+#        E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Exe\Plantilla_Iar.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map
+#        E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\List\Plantilla_Iar.map
+#        --config E:\iar\arm\config\linker\TexasInstruments\TM4C123GH6.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__CPP_Runtime   = 1
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x3'ffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'7fff] {
+          rw, block CSTACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind         Address    Size  Object
+  -------   ----         -------    ----  ------
+"A0":                               0x40
+  .intvec   ro code          0x0    0x40  vector_table_M.o [4]
+                          - 0x40    0x40
+
+"P1":                              0x11c
+  .text     ro code         0x40    0x94  main.o [1]
+  .text     ro code         0xd4    0x22  fpinit_M.o [3]
+  .text     ro code         0xf6     0x2  vectortrap_M.o [4]
+  .text     ro code         0xf8    0x1e  cmain.o [4]
+  .text     ro code        0x116     0x4  low_level_init.o [2]
+  .text     ro code        0x11a     0x4  exit.o [2]
+  .text     ro code        0x120     0xa  cexit.o [4]
+  .text     ro code        0x12c    0x14  exit.o [5]
+  .text     ro code        0x140    0x1c  cstartup_M.o [4]
+                         - 0x15c   0x11c
+
+"P2":                             0x1000
+  CSTACK             0x2000'0000  0x1000  <Block>
+    CSTACK  uninit   0x2000'0000  0x1000  <Block tail>
+                   - 0x2000'1000  0x1000
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0x15c     0x3'ffff  0x3'fea4
+  0x2000'1000  0x2000'7fff    0x7000
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  rw data
+    ------            -------  -------
+command line/config:
+    ----------------------------------
+    Total:
+
+E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Obj: [1]
+    main.o                148
+    ----------------------------------
+    Total:                148
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    ----------------------------------
+    Total:                  8
+
+m7M_tls.a: [3]
+    fpinit_M.o             34
+    ----------------------------------
+    Total:                 34
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           28
+    vector_table_M.o       64
+    vectortrap_M.o          2
+    ----------------------------------
+    Total:                134
+
+shb_l.a: [5]
+    exit.o                 20
+    ----------------------------------
+    Total:                 20
+
+    Gaps                    4
+    Linker created               4'096
+--------------------------------------
+    Grand Total:          348    4'096
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                     Address  Size  Type      Object
+-----                     -------  ----  ----      ------
+?main                        0xf9        Code  Gb  cmain.o [4]
+BusFault_Handler             0xf7        Code  Wk  vectortrap_M.o [4]
+CSTACK$$Base          0x2000'0000         --   Gb  - Linker created -
+CSTACK$$Limit         0x2000'1000         --   Gb  - Linker created -
+DebugMon_Handler             0xf7        Code  Wk  vectortrap_M.o [4]
+HardFault_Handler            0xf7        Code  Wk  vectortrap_M.o [4]
+MemManage_Handler            0xf7        Code  Wk  vectortrap_M.o [4]
+NMI_Handler                  0xf7        Code  Wk  vectortrap_M.o [4]
+PendSV_Handler               0xf7        Code  Wk  vectortrap_M.o [4]
+Region$$Table$$Base           0x0         --   Gb  - Linker created -
+Region$$Table$$Limit          0x0         --   Gb  - Linker created -
+SVC_Handler                  0xf7        Code  Wk  vectortrap_M.o [4]
+SysTick_Handler              0xf7        Code  Wk  vectortrap_M.o [4]
+UsageFault_Handler           0xf7        Code  Wk  vectortrap_M.o [4]
+__cmain                      0xf9        Code  Gb  cmain.o [4]
+__exit                      0x12d  0x14  Code  Gb  exit.o [5]
+__iar_init_vfp               0xd5        Code  Gb  fpinit_M.o [3]
+__iar_program_start         0x141        Code  Gb  cstartup_M.o [4]
+__low_level_init            0x117   0x4  Code  Gb  low_level_init.o [2]
+__vector_table                0x0        Data  Gb  vector_table_M.o [4]
+_call_main                  0x105        Code  Gb  cmain.o [4]
+_exit                       0x121        Code  Gb  cexit.o [4]
+exit                        0x11b   0x4  Code  Gb  exit.o [2]
+main                         0x41  0x94  Code  Gb  main.o [1]
+
+
+[1] = E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Obj
+[2] = dl7M_tln.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+    348 bytes of readonly  code memory
+  4'096 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

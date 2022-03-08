@@ -1,0 +1,1 @@
+"./tm4c123gh6pm_startup_ccs.obj" "./CMSIS/DSP_Lib/Source/TransformFunctions/arm_bitreversal2.obj" "./Core/Src/main.obj" "../tm4c123gh6pm.cmd" -llibc.a 

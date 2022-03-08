@@ -1,0 +1,15 @@
+"E:\iar\arm\bin\armPROC.dll" 
+
+"E:\iar\arm\bin\armLMIFTDI.dll" 
+
+"E:\Project\TexasInstruments_TIVAC\Plantilla_IAR\Debug\Exe\Plantilla_Iar.out" 
+
+--plugin="E:\iar\arm\bin\armbat.dll" 
+
+--device_macro="E:\iar\arm\config\debugger\TexasInstruments\TM4C123.dmac" 
+
+--flash_loader="E:\iar\arm\config\flashloader\TexasInstruments\FlashTC4_H6_o.board" 
+
+
+
+
