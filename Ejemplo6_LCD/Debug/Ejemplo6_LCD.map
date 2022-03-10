@@ -1,0 +1,171 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.6                     
+******************************************************************************
+>> Linked Thu Mar 10 00:51:44 2022
+
+OUTPUT FILE NAME:   <Ejemplo6_LCD.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000d69
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000da8  0003f258  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000da8   00000da8    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000b3c   00000b3c    r-x .text
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00000b3c     
+                  0000026c    000006bc     LCD.obj (.text)
+                  00000928    000003cc     GPIO.obj (.text)
+                  00000cf4    00000074     main.obj (.text)
+                  00000d68    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000d94    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000da0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000da4    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         12     620       0      
+                                                              
+    .\Core\Src\
+       LCD.obj                        1724   0         0      
+       GPIO.obj                       972    0         0      
+       main.obj                       116    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         2812   0         0      
+                                                              
+    E:\ti\css1040\ccs\tools\compiler\ti-cgt-arm_20.2.6.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   2876   620       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                    
+-------   ----                    
+00000da5  C$$EXIT                 
+00000929  GPIO_Init               
+000004d9  LCD_STM32_Home          
+000004bf  LCD_TivaC_Clear         
+000002f1  LCD_TivaC_Cmd           
+0000026d  LCD_TivaC_DataBus       
+00000325  LCD_TivaC_Init          
+0000050d  LCD_TivaC_New_Char      
+0000046b  LCD_TivaC_Print_Char    
+0000049f  LCD_TivaC_Print_String  
+0000039d  LCD_TivaC_SetCursor     
+000008f7  LCD_TivaC_Write_New_Char
+0000096b  Read_GPIO               
+00000d95  ResetISR                
+00000b9b  Toggle_GPIO             
+00000a39  Write_GPIO              
+20000200  __STACK_END             
+00000200  __STACK_SIZE            
+20000200  __STACK_TOP             
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+00000000  __TI_static_base__      
+ffffffff  __binit__               
+ffffffff  __c_args__              
+UNDEFED   __mpu_init              
+20000000  __stack                 
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+00000d69  _c_int00_noinit_noargs  
+00000da1  _system_pre_init        
+00000da5  abort                   
+ffffffff  binit                   
+00000c55  delay_ms                
+00000cad  delay_us                
+00000000  g_pfnVectors            
+00000cf5  main                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                    
+-------   ----                    
+00000000  __TI_static_base__      
+00000000  g_pfnVectors            
+00000200  __STACK_SIZE            
+0000026d  LCD_TivaC_DataBus       
+000002f1  LCD_TivaC_Cmd           
+00000325  LCD_TivaC_Init          
+0000039d  LCD_TivaC_SetCursor     
+0000046b  LCD_TivaC_Print_Char    
+0000049f  LCD_TivaC_Print_String  
+000004bf  LCD_TivaC_Clear         
+000004d9  LCD_STM32_Home          
+0000050d  LCD_TivaC_New_Char      
+000008f7  LCD_TivaC_Write_New_Char
+00000929  GPIO_Init               
+0000096b  Read_GPIO               
+00000a39  Write_GPIO              
+00000b9b  Toggle_GPIO             
+00000c55  delay_ms                
+00000cad  delay_us                
+00000cf5  main                    
+00000d69  _c_int00_noinit_noargs  
+00000d95  ResetISR                
+00000da1  _system_pre_init        
+00000da5  C$$EXIT                 
+00000da5  abort                   
+20000000  __stack                 
+20000000  __start___llvm_prf_cnts 
+20000000  __stop___llvm_prf_cnts  
+20000200  __STACK_END             
+20000200  __STACK_TOP             
+ffffffff  __TI_pprof_out_hndl     
+ffffffff  __TI_prof_data_size     
+ffffffff  __TI_prof_data_start    
+ffffffff  __binit__               
+ffffffff  __c_args__              
+ffffffff  binit                   
+UNDEFED   __mpu_init              
+
+[37 symbols]
